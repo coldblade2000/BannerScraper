@@ -1,0 +1,19 @@
+{
+  "name": "requester2lol",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "mocha"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "mocha": "^8.0.1",
+    "mongoose": "^5.9.25"
+  },
+  "devDependencies": {}
+}
