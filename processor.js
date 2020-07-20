@@ -1,6 +1,6 @@
 import {Course} from "./models.js"
 
-export const processAllCourses = (rawCourseList)=>{
+export const processAllCourses = (rawCourseList) => {
     const mongooseCourseList = []
     for (const rawCourse of rawCourseList) {
         mongooseCourseList.push(processCourse(rawCourse))
@@ -8,13 +8,14 @@ export const processAllCourses = (rawCourseList)=>{
     return mongooseCourseList
 }
 
-const processCourse = (rawCourse)=>{
+const processCourse = (rawCourse) => {
     let newFaculty = []
-    for (const professor of rawCourse['faculty']){
+    for (const professor of rawCourse['faculty']) {
         newFaculty.push({
-          displayName: professor.displayName,
-          email: professor.emailAddress,
-          isPrimary: professor.isPrimary
+            bannerId: professor.bannerId,
+            displayName: professor.displayName,
+            email: professor.emailAddress,
+            isPrimary: professor['primaryIndicator']
         });
     }
 
@@ -39,68 +40,68 @@ const processCourse = (rawCourse)=>{
     });
 }
 
-export const getActiveDaysArray = (meetingsFaculty)=>{
+export const getActiveDaysArray = (meetingsFaculty) => {
     const initialDays = {
-        monday:false,
-        tuesday:false,
-        wednesday:false,
-        thursday:false,
-        friday:false,
-        saturday:false,
-        sunday:false
+        monday: false,
+        tuesday: false,
+        wednesday: false,
+        thursday: false,
+        friday: false,
+        saturday: false,
+        sunday: false
     }
     for (const meeting of meetingsFaculty) {
         const {
             monday, tuesday, wednesday, thursday, friday, saturday, sunday
         } = meeting.meetingTime
-        if (monday){
+        if (monday) {
             initialDays.monday = true
         }
-        if (tuesday){
+        if (tuesday) {
             initialDays.tuesday = true
         }
-        if (wednesday){
+        if (wednesday) {
             initialDays.wednesday = true
         }
-        if (thursday){
+        if (thursday) {
             initialDays.thursday = true
         }
-        if (friday){
+        if (friday) {
             initialDays.friday = true
         }
-        if (saturday){
+        if (saturday) {
             initialDays.saturday = true
         }
-        if (sunday){
+        if (sunday) {
             initialDays.sunday = true
         }
     }
     return initialDays;
 }
-const getMeetings = (rawMeetings) =>{
+const getMeetings = (rawMeetings) => {
     const meetings = []
     for (const rawMeeting of rawMeetings) {
         const {
             monday, tuesday, wednesday, thursday, friday, saturday, sunday
-        } = rawMeeting
+        } = rawMeeting.meetingTime
         const initialDays = {
-            monday:monday,
-            tuesday:tuesday,
-            wednesday:wednesday,
-            thursday:thursday,
-            friday:friday,
-            saturday:saturday,
-            sunday:sunday
+            monday: monday,
+            tuesday: tuesday,
+            wednesday: wednesday,
+            thursday: thursday,
+            friday: friday,
+            saturday: saturday,
+            sunday: sunday
         }
 
         meetings.push({
-            beginTime:rawMeeting['beginTime'],
-            endTime:rawMeeting['endTime'],
-            building:rawMeeting['buildingDescription'], //buildingDescription, Bloque C
-            campus: rawMeeting['campusDescription'], //P, V
-            startDate:rawMeeting['startDate'],
-            endDate:rawMeeting['endDate'],
-            activeDays:initialDays
+            beginTime: rawMeeting.meetingTime['beginTime'],
+            endTime: rawMeeting.meetingTime['endTime'],
+            building: rawMeeting.meetingTime['buildingDescription'], //buildingDescription, Bloque C
+            campus: rawMeeting.meetingTime['campusDescription'], //P, V
+            startDate: rawMeeting.meetingTime['startDate'],
+            endDate: rawMeeting.meetingTime['endDate'],
+            activeDays: initialDays
         })
     }
     return meetings

@@ -16,6 +16,7 @@ const courseSchema = new mongoose.Schema({
     "openSection": Boolean, //true
     "courseIdentifier": String, //BIOL1105
     faculty: [{ //ADMI1101 para encontrar ejemplo
+        bannerId: String,
         displayName:String,
         email:String,
         isPrimary:Boolean
