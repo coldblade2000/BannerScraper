@@ -12,6 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "axios": "^0.19.2",
+    "he": "^1.2.0",
     "mocha": "^8.0.1",
     "mongoose": "^5.9.25"
   },

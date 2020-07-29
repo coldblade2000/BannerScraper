@@ -1,4 +1,5 @@
 import {Course} from "./models.js"
+import he from 'he'
 
 export const processAllCourses = (rawCourseList) => {
     const mongooseCourseList = []
@@ -22,18 +23,19 @@ const processCourse = (rawCourse) => {
     return new Course({
         "CRN": rawCourse['courseReferenceNumber'], //40234
         "term": rawCourse['term'], //202020
-        "subjectShort": rawCourse['subject'], //BIOL
-        "courseNumber": rawCourse['courseNumber'], //1105 de ISIS-1105
-        "subjectLong": rawCourse['subjectDescription'], //BIOLOGIA
-        "campusDescription": rawCourse['campusDescription'], //VIRTUAL , LABORATORIO
-        "scheduleTypeDescription": rawCourse['scheduleTypeDescription'], //TEORICA , PROYECTO DE GRADO
-        "courseTitle": rawCourse['courseTitle'], //ESTRUCTURAS DE DATOS
+        "subjectShort": he.decode(rawCourse['subject']), //BIOL
+        "courseNumber": he.decode(rawCourse['courseNumber']), //1105 de ISIS-1105
+        "subjectLong": he.decode(rawCourse['subjectDescription']), //BIOLOGIA
+        "sectionNumber": parseInt(rawCourse['sequenceNumber']),
+        "campusDescription": he.decode(rawCourse['campusDescription']), //VIRTUAL , LABORATORIO
+        "scheduleTypeDescription": he.decode(rawCourse['scheduleTypeDescription']), //TEORICA , PROYECTO DE GRADO
+        "courseTitle": he.decode(rawCourse['courseTitle']), //ESTRUCTURAS DE DATOS
         "maximumSeats": rawCourse['maximumEnrollment'], //50
         "currentSeats": rawCourse['enrollment'], //0
         "emptySeats": rawCourse['seatsAvailable'], //50
         "credits": rawCourse['creditHourLow'], //3, 2, 1
         "openSection": rawCourse['openSection'], //true
-        "courseIdentifier": rawCourse['subjectCourse'], //BIOL1105
+        "courseIdentifier": he.decode(rawCourse['subjectCourse']), //BIOL1105
         faculty: newFaculty,
         meetings: getMeetings(rawCourse['meetingsFaculty']),
         totalActiveDays: getActiveDaysArray(rawCourse['meetingsFaculty'])

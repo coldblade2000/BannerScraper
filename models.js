@@ -6,6 +6,7 @@ const courseSchema = new mongoose.Schema({
     "subjectShort": String, //BIOL
     "courseNumber": String, //1105 de ISIS-1105
     "subjectLong": String, //BIOLOGIA
+    "sectionNumber": Number,
     "campusDescription": String, //VIRTUAL , LABORATORIO
     "scheduleTypeDescription": String, //TEORICA , PROYECTO DE GRADO
     "courseTitle": String, //ESTRUCTURAS DE DATOS

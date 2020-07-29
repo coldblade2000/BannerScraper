@@ -3,7 +3,7 @@ import {processAllCourses} from "./processor.js";
 import {saveCoursesToDB} from "./databaseHandler.js";
 
 const PAGE_SIZE = 500 //Default 500
-const AMOUNT_OF_AVAILABLE_COURSES = 5705 //Default 5705
+const AMOUNT_OF_AVAILABLE_COURSES =  5722  //Default 5705
 const DELAY_BETWEEN_REQUESTS = 5 //seconds, default 5 seconds
 
 const IS_DATA_LOGGING_ENABLED = false
