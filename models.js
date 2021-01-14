@@ -1,6 +1,7 @@
 import mongoose from "mongoose"
 
 const courseSchema = new mongoose.Schema({
+    "_id": Number,
     "CRN": Number, //40234
     "term": Number, //202020
     "subjectShort": String, //BIOL

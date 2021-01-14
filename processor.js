@@ -21,6 +21,7 @@ const processCourse = (rawCourse) => {
     }
 
     return new Course({
+        "_id": rawCourse['courseReferenceNumber'],
         "CRN": rawCourse['courseReferenceNumber'], //40234
         "term": rawCourse['term'], //202020
         "subjectShort": he.decode(rawCourse['subject']), //BIOL
