@@ -1,12 +1,11 @@
 import scraper from './scraper.js'
 import {processAllCourses} from "./processor.js";
 import {saveCoursesToDB} from "./databaseHandler.js";
-
+import {BACKEND_ADDRESS} from "./secrets.js"
 const PAGE_SIZE = 500 //Default 500
 const AMOUNT_OF_AVAILABLE_COURSES =  5784  //Default 5705
 const DELAY_BETWEEN_REQUESTS = 2 //seconds, default 5 seconds
 
-export const BACKEND_ADDRESS = "192.168.0.29:27017"
 
 const IS_DATA_LOGGING_ENABLED = false
 

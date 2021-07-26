@@ -12,3 +12,6 @@
 export const JSESSIONID = 'D-----7DB5-----F164E-----80CB---'
 export const Cookie = `JSESSIONID=${JSESSIONID}; __utma=...; _ga=...; __utmz=...; _gid=...`
 export const XSynchronizerToken = '6f...3e5-9..f-4...-b..3-e.....8a1..1'
+
+export const BACKEND_ADDRESS = "127.0.0.1:27017"
+export const BACKEND_PASSWORD = "hi"

@@ -1,7 +1,6 @@
 import mongoose from 'mongoose'
-import { BACKEND_ADDRESS } from './index.js';
-import {BACKEND_PASSWORD} from './secrets.js'
-mongoose.connect(`mongodb://${BACKEND_ADDRESS}/ banner`, {
+import {BACKEND_PASSWORD, BACKEND_ADDRESS} from './secrets.js'
+mongoose.connect(`mongodb://${BACKEND_ADDRESS}/banner`, {
 user:'backend',
 pass: BACKEND_PASSWORD,    
 useNewUrlParser: true, useUnifiedTopology: true});
