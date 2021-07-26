@@ -101,7 +101,7 @@ const getMeetings = (rawMeetings) => {
             beginTime: rawMeeting.meetingTime['beginTime'],
             endTime: rawMeeting.meetingTime['endTime'],
             building: rawMeeting.meetingTime['buildingDescription'], //buildingDescription, Bloque C
-            campus: rawMeeting.meetingTime['campusDescription'], //P, V
+            campus: rawMeeting.meetingTime['campus'], //P, V
             startDate: rawMeeting.meetingTime['startDate'],
             endDate: rawMeeting.meetingTime['endDate'],
             activeDays: initialDays
